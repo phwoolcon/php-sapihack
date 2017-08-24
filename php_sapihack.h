@@ -31,7 +31,7 @@ extern zend_module_entry sapihack_module_entry;
 # define phpext_sapihack_ptr &sapihack_module_entry
 
 # define PHP_SAPIHACK_VERSION       "0.1.0"
-# define PHP_SAPIHACK_VERSION_ID    000100 /* Major 00 Minor 01 Patch 00*/
+# define PHP_SAPIHACK_VERSION_ID    100 /* Major 00 Minor 01 Patch 00*/
 # define PHP_SAPIHACK_BUILD_DATE    __DATE__ " " __TIME__
 # define PHP_SAPIHACK_AUTHOR        "Christopher CHEN <fishdrowned@gmail.com>"
 
