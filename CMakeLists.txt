@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.5)
+
+# Project name
+project(sapihack)
+# Use C11
+set(CMAKE_C_STANDARD 11)
+
+set(SOURCE_FILES sapihack.c php_sapihack.h)
+
+add_executable(sapihack ${SOURCE_FILES})
+
+# Define path to php-src, change accordingly
+set(PHP_SOURCE ../php-src)
+# Import php sources
+include_directories(
+        ${PHP_SOURCE}
+        ${PHP_SOURCE}/main
+        ${PHP_SOURCE}/Zend
+        ${PHP_SOURCE}/TSRM
+        ${PHP_SOURCE}/ext
+        ${PHP_SOURCE}/sapi
+        ${PHP_SOURCE}/pear
+)

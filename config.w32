@@ -1,0 +1,7 @@
+ARG_ENABLE('sapihack', 'sapihack support', 'no');
+
+if (PHP_SAPIHACK != 'no') {
+	AC_DEFINE('HAVE_SAPIHACK', 1, 'sapihack support enabled');
+
+	EXTENSION('sapihack', 'sapihack.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}
