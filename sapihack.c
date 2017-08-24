@@ -43,7 +43,7 @@ PHP_MINIT_FUNCTION (sapihack) {
  */
 PHP_MINFO_FUNCTION (sapihack) {
     php_info_print_table_start();
-    php_info_print_table_header(2, "sapihack support", "enabled");
+    php_info_print_table_header(2, "SAPI Hack Support", "enabled");
     php_info_print_table_row(2, "Version", PHP_SAPIHACK_VERSION);
     php_info_print_table_row(2, "Author", PHP_SAPIHACK_AUTHOR);
     php_info_print_table_row(2, "Build Date", PHP_SAPIHACK_BUILD_DATE);
