@@ -21,7 +21,9 @@
 /* {{{ void sapihack_rest_headers_sent()
  */
 PHP_FUNCTION (sapihack_rest_headers_sent) {
-    ZEND_PARSE_PARAMETERS_NONE();
+    if (zend_parse_parameters_none() == FAILURE) {
+        return;
+    }
 
     SG(headers_sent) = 0;
 }
@@ -67,14 +69,14 @@ const zend_function_entry sapihack_functions[] = {
  */
 zend_module_entry sapihack_module_entry = {
         STANDARD_MODULE_HEADER,
-        "sapihack",                    /* Extension name */
-        sapihack_functions,            /* zend_function_entry */
-        NULL,                            /* PHP_MINIT - Module initialization */
-        NULL,                            /* PHP_MSHUTDOWN - Module shutdown */
-        PHP_RINIT(sapihack),            /* PHP_RINIT - Request initialization */
-        NULL,                            /* PHP_RSHUTDOWN - Request shutdown */
+        "sapihack",                     /* Extension name */
+        sapihack_functions,             /* zend_function_entry */
+        PHP_MINIT(sapihack),            /* PHP_MINIT - Module initialization */
+        NULL,                           /* PHP_MSHUTDOWN - Module shutdown */
+        NULL,                           /* PHP_RINIT - Request initialization */
+        NULL,                           /* PHP_RSHUTDOWN - Request shutdown */
         PHP_MINFO(sapihack),            /* PHP_MINFO - Module info */
-        PHP_SAPIHACK_VERSION,        /* Version */
+        PHP_SAPIHACK_VERSION,           /* Version */
         STANDARD_MODULE_PROPERTIES
 };
 /* }}} */
