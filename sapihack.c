@@ -18,12 +18,12 @@
 
 #include "php_sapihack.h"
 
-/* {{{ void sapihack_rest_headers_sent()
+/* {{{ void sapihack_reset_headers_sent()
  */
-ZEND_BEGIN_ARG_INFO(arginfo_sapihack_rest_headers_sent, 0)
+ZEND_BEGIN_ARG_INFO(arginfo_sapihack_reset_headers_sent, 0)
 ZEND_END_ARG_INFO()
 
-PHP_FUNCTION (sapihack_rest_headers_sent) {
+PHP_FUNCTION (sapihack_reset_headers_sent) {
     if (zend_parse_parameters_none() == FAILURE) {
         return;
     }
@@ -61,7 +61,7 @@ PHP_MINFO_FUNCTION (sapihack) {
  * Register php functions
  */
 const zend_function_entry sapihack_functions[] = {
-        PHP_FE(sapihack_rest_headers_sent, arginfo_sapihack_rest_headers_sent)
+        PHP_FE(sapihack_reset_headers_sent, arginfo_sapihack_reset_headers_sent)
         PHP_FE_END
 };
 /* }}} */

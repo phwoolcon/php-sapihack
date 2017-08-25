@@ -1,5 +1,5 @@
 --TEST--
-sapihack_rest_headers_sent() Basic test
+sapihack_reset_headers_sent() Basic test
 --SKIPIF--
 <?php
 if (!extension_loaded('sapihack')) {
@@ -11,7 +11,7 @@ if (!extension_loaded('sapihack')) {
 var_dump(headers_sent());
 echo "Send something\n";
 var_dump(headers_sent());
-sapihack_rest_headers_sent();
+sapihack_reset_headers_sent();
 var_dump(headers_sent());
 echo "Done\n";
 ?>
