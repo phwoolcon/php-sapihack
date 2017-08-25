@@ -42,11 +42,12 @@ service php7.2-fpm restart
 
 ```php
 <?php
-echo 'Something has been output to STDOUT, but this is not HTTP response in CLI mdoe';
+echo 'Something has been output to STDOUT, but this is not HTTP response in CLI mode';
 echo 'But `sapi_globals.headers_sent` has been set to 1';
 echo 'Then you will not be able to use `session_` functions in php 7.2';
 echo 'Call `sapihack_reset_headers_sent()` to help you';
 
-sapihack_reset_headers_sent();
+// Use SAPIHACK_VERSION_ID to detect extension availablity
+defined('SAPIHACK_VERSION_ID') and sapihack_reset_headers_sent();
 session_name('my_app');
 ```
