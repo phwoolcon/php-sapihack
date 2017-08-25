@@ -23,7 +23,8 @@
 ZEND_BEGIN_ARG_INFO(arginfo_sapihack_reset_headers_sent, 0)
 ZEND_END_ARG_INFO()
 
-PHP_FUNCTION (sapihack_reset_headers_sent) {
+PHP_FUNCTION (sapihack_reset_headers_sent)
+{
     if (zend_parse_parameters_none() == FAILURE) {
         return;
     }
@@ -35,7 +36,8 @@ PHP_FUNCTION (sapihack_reset_headers_sent) {
 /* {{{ PHP_MINIT_FUNCTION
  * Init on module load
  */
-PHP_MINIT_FUNCTION (sapihack) {
+PHP_MINIT_FUNCTION (sapihack)
+{
     /* Define PHP constants */
     REGISTER_STRING_CONSTANT("SAPIHACK_VERSION", PHP_SAPIHACK_VERSION, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("SAPIHACK_VERSION_ID", PHP_SAPIHACK_VERSION_ID, CONST_CS | CONST_PERSISTENT);
@@ -47,7 +49,8 @@ PHP_MINIT_FUNCTION (sapihack) {
 /* {{{ PHP_MINFO_FUNCTION
  * Present phpinfo
  */
-PHP_MINFO_FUNCTION (sapihack) {
+PHP_MINFO_FUNCTION (sapihack)
+{
     php_info_print_table_start();
     php_info_print_table_header(2, "SAPI Hack Support", "enabled");
     php_info_print_table_row(2, "Version", PHP_SAPIHACK_VERSION);
@@ -61,8 +64,8 @@ PHP_MINFO_FUNCTION (sapihack) {
  * Register php functions
  */
 const zend_function_entry sapihack_functions[] = {
-        PHP_FE(sapihack_reset_headers_sent, arginfo_sapihack_reset_headers_sent)
-        PHP_FE_END
+    PHP_FE(sapihack_reset_headers_sent, arginfo_sapihack_reset_headers_sent)
+    PHP_FE_END
 };
 /* }}} */
 
@@ -70,16 +73,16 @@ const zend_function_entry sapihack_functions[] = {
  * Register extension
  */
 zend_module_entry sapihack_module_entry = {
-        STANDARD_MODULE_HEADER,
-        "sapihack",                     /* Extension name */
-        sapihack_functions,             /* zend_function_entry */
-        PHP_MINIT(sapihack),            /* PHP_MINIT - Module initialization */
-        NULL,                           /* PHP_MSHUTDOWN - Module shutdown */
-        NULL,                           /* PHP_RINIT - Request initialization */
-        NULL,                           /* PHP_RSHUTDOWN - Request shutdown */
-        PHP_MINFO(sapihack),            /* PHP_MINFO - Module info */
-        PHP_SAPIHACK_VERSION,           /* Version */
-        STANDARD_MODULE_PROPERTIES
+    STANDARD_MODULE_HEADER,
+    "sapihack",                     /* Extension name */
+    sapihack_functions,             /* zend_function_entry */
+    PHP_MINIT(sapihack),            /* PHP_MINIT - Module initialization */
+    NULL,                           /* PHP_MSHUTDOWN - Module shutdown */
+    NULL,                           /* PHP_RINIT - Request initialization */
+    NULL,                           /* PHP_RSHUTDOWN - Request shutdown */
+    PHP_MINFO(sapihack),            /* PHP_MINFO - Module info */
+    PHP_SAPIHACK_VERSION,           /* Version */
+    STANDARD_MODULE_PROPERTIES
 };
 /* }}} */
 
