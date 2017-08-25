@@ -1,14 +1,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 # Project name
-project(sapihack)
+get_filename_component(DIR_AS_PROJECT ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+string(REPLACE " " "_" DIR_AS_PROJECT ${DIR_AS_PROJECT})
+project(${DIR_AS_PROJECT})
+message(STATUS "Configuring ${DIR_AS_PROJECT}...")
 # Use C11
 set(CMAKE_C_STANDARD 11)
 
-set(SOURCE_FILES sapihack.c php_sapihack.h)
+message(STATUS "Adding source/head files...")
+file(GLOB_RECURSE SRC_LIST FOLLOW_SYMLINKS *.c)
+file(GLOB_RECURSE HEAD_FILES FOLLOW_SYMLINKS *.h)
+add_library(shared SHARED ${SRC_LIST})
 
-add_executable(sapihack ${SOURCE_FILES})
-
+message(STATUS "Adding php-src...")
 # Define path to php-src, change accordingly
 set(PHP_SOURCE ../php-src)
 # Import php sources
