@@ -20,6 +20,9 @@
 
 /* {{{ void sapihack_rest_headers_sent()
  */
+ZEND_BEGIN_ARG_INFO(arginfo_sapihack_rest_headers_sent, 0)
+ZEND_END_ARG_INFO()
+
 PHP_FUNCTION (sapihack_rest_headers_sent) {
     if (zend_parse_parameters_none() == FAILURE) {
         return;
@@ -29,9 +32,11 @@ PHP_FUNCTION (sapihack_rest_headers_sent) {
 }
 /* }}} */
 
-/* {{{ PHP_MINIT_FUNCTION init on module load
+/* {{{ PHP_MINIT_FUNCTION
+ * Init on module load
  */
 PHP_MINIT_FUNCTION (sapihack) {
+    /* Define PHP constants */
     REGISTER_STRING_CONSTANT("SAPIHACK_VERSION", PHP_SAPIHACK_VERSION, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT("SAPIHACK_VERSION_ID", PHP_SAPIHACK_VERSION_ID, CONST_CS | CONST_PERSISTENT);
 
@@ -40,6 +45,7 @@ PHP_MINIT_FUNCTION (sapihack) {
 /* }}} */
 
 /* {{{ PHP_MINFO_FUNCTION
+ * Present phpinfo
  */
 PHP_MINFO_FUNCTION (sapihack) {
     php_info_print_table_start();
@@ -51,13 +57,8 @@ PHP_MINFO_FUNCTION (sapihack) {
 }
 /* }}} */
 
-/* {{{ arginfo
- */
-ZEND_BEGIN_ARG_INFO(arginfo_sapihack_rest_headers_sent, 0)
-ZEND_END_ARG_INFO()
-/* }}} */
-
 /* {{{ sapihack_functions[]
+ * Register php functions
  */
 const zend_function_entry sapihack_functions[] = {
         PHP_FE(sapihack_rest_headers_sent, arginfo_sapihack_rest_headers_sent)
@@ -66,6 +67,7 @@ const zend_function_entry sapihack_functions[] = {
 /* }}} */
 
 /* {{{ sapihack_module_entry
+ * Register extension
  */
 zend_module_entry sapihack_module_entry = {
         STANDARD_MODULE_HEADER,
