@@ -1,7 +1,7 @@
 # php-sapihack
 
 PHP Extension: SAPI Hack
-## Usa case
+## Use case
 Headers are not used completely in CLI mode, but `headers_sent` is always set to `1`
 if any content is echoed on the screen, then we get unexpected annoying error with
 message `headers already sent`
@@ -27,4 +27,26 @@ echo 'extension = sapihack.so' > /etc/php/7.2/mods-available/sapihack.ini
 sudo ln -s ../../mods-available/sapihack.ini /etc/php/7.2/fpm/conf.d/20-sapihack.ini
 sudo ln -s ../../mods-available/sapihack.ini /etc/php/7.2/cli/conf.d/20-sapihack.ini
 service php7.2-fpm restart
+```
+
+## Documentation
+
+### Constants
+`SAPIHACK_VERSION`
+
+`SAPIHACK_VERSION_ID`
+
+### Functions
+#### sapihack_reset_headers_sent()
+**WARNING** Only use this function in CLI mode.
+
+```php
+<?php
+echo 'Something has been output to STDOUT, but this is not HTTP response in CLI mdoe';
+echo 'But `sapi_globals.headers_sent` has been set to 1';
+echo 'Then you will not be able to use `session_` functions in php 7.2';
+echo 'Call `sapihack_reset_headers_sent()` to help you';
+
+sapihack_reset_headers_sent();
+session_name('my_app');
 ```
